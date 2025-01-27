@@ -1,0 +1,29 @@
+<div class="row">
+    
+        <div class="column-1">
+            <h4>{{job['title']}}</h4>
+            {% if 'salary' in job %}
+            <div>
+                <p class="salary">
+                        Salary: Rs.{{job['salary']}} per month.
+                </p>
+            </div>
+            {% else %}
+            <div>
+                <p class="salary">
+                        Salary: Will disclose in person.
+                </p>
+            </div>
+            {% endif %}
+            <div>
+                <p class="location">Location: {{job['location']}}</p>
+            </div>
+        </div>
+
+        <div class="column-2">
+            <div>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+        </div>
+</div>
+<hr>
