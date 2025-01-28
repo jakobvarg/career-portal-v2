@@ -7,23 +7,17 @@
               margin: 0;
               box-sizing: border-box; 
             }
-            #container {
-                margin: auto;
-                max-width: 968px;
-            }
             h1 {
-                font-size: 40px;
+                font-size: 2.5rem;
                 font-family: Roboto;
-                font-weight: 700;
-                color: #6a92d7;
-                text-align: center;
+                margin: 8px;
+                text-align: center
             }
             h2 {
                 font-family: Roboto;
-                font-size: 32px;
-                font-weight: 500;
-                color: blueviolet;
-                text-align: center
+                font-size: 2rem;
+                text-align: center;
+                margin: 12px
             }
             h4 {
                 font-family: Poppins;
@@ -34,26 +28,12 @@
             }
             #hero {
                 width: 100%;
-                height: 420px;
+                height: 26.25em;
                 object-fit: cover;
             }
-            p {
-                font-family: Roboto;
-                font-weight: 400;
-                color: grey;
+            .lead {
                 text-align: justify;
-                margin: 4px;
-            }
-            .column-1 {
-                float: left;
-                width: 66.66%;
-                height: 120px
-            }
-            .column-2 {
-                float: left;
-                width: 33.33%;
-                height: 120px;
-                text-align: right;
+                /* margin: 4px; */
             }
             .salary {
                 font-family: Poppins;
@@ -71,16 +51,6 @@
             hr {
                 margin-bottom: 8px;
             }
-            .apply-btn {
-                background-color: blue;
-                color: white;
-                border-radius: 5px;
-                padding: 8px;
-                width: 100px;
-                height: 32px;
-                margin-top: 40px;
-                margin-bottom: 8px;
-            }
             .btn-container {
                 text-align: center;
             }
@@ -94,43 +64,59 @@
                 font-weight: 400;
             }
         </style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Job Portal - FLASK PROJECT</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="icon" type="image/x-icon" href="/static/img/favicon.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     </head>
     <body>
-    <div id="container">
+    {% include 'navmenu.html' %}
+    <img id="hero" class="img-fluid" src="/static/img/banner.webp">
+    <div class="container">
         <h1>{{company_name}} Portal</h1>
-        <img id="hero" src="/static/img/banner.webp">
-        <h2>About Jakob's</h2>
-        <p>When you run the file hello_world.py, the ending .py indicates that the
-            file is a Python program. Your editor then runs the file through the Python
-            interpreter, which reads through the program and determines what each word
-            in the program means. For example, when the interpreter sees the word
-            print followed by parentheses, it prints to the screen whatever is inside the
-            parentheses.
-            As you write your programs, your editor highlights different parts of
-            your program in different ways. For example, it recognizes that print() is
-            the name of a function and displays that word in one color. It recognizes
-            that "Hello Python world!" is not Python code, and displays that phrase in a
-            different color. This feature is called syntax highlighting and is quite useful
-            as you start to write your own programs.</p>
-        <h2>Job Opening's</h2>
-        <div class="row">
-    
-            <div>
-                {% for job in jobs %}
-                    {% include "joblisting.html" %}
-                {% endfor %}
+        <h2>About Jakob's</h2
+
+        <div class="container text-center">
+            <div class="row row-cols-2">
+                <div clas="col">    
+                    <p class="lead">When you run the file hello_world.py, the ending .py indicates that the
+                    file is a Python program. Your editor then runs the file through the Python
+                    interpreter, which reads through the program and determines what each word
+                    in the program means. For example, when the interpreter sees the word
+                    print followed by parentheses, it prints to the screen whatever is inside the
+                    parentheses.
+                    As you write your programs, your editor highlights different parts of
+                    your program in different ways. For example, it recognizes that print() is
+                    the name of a function and displays that word in one color. It recognizes
+                    that "Hello Python world!" is not Python code, and displays that phrase in a
+                    different color. This feature is called syntax highlighting and is quite useful
+                    as you start to write your own programs.</p>
+                </div>
+                <div class="col">
+                    <img src="/static/img/recruitment.png" class="rounded img-fluid" style="height: 400px">
+                </div>
             </div>
-            
         </div>
+        <h2>Job Opening's</h2>
+        <div class="container">
+            <div class="row justify-content-between">
         
+                <div>
+                    {% for job in jobs %}
+                        {% include "joblisting.html" %}
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
         <div class="container btn-container">
-            <button class="primary-btn">Contact Us</button>
+            <a type="button" href="mailto:jakobvargis@gmail.com?subject=Inquiry for {{company_name}}" class="btn btn-danger">Contact Us</a>
         </div>
     </div>
+    {% include 'footer.html' %}
     </body>
 </html>

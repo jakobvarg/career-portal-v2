@@ -1,6 +1,6 @@
 <div class="row">
     
-        <div class="column-1">
+        <div class="col-9">
             <h4>{{job['title']}}</h4>
             {% if 'salary' in job %}
             <div>
@@ -20,9 +20,9 @@
             </div>
         </div>
 
-        <div class="column-2">
+        <div class="col-3 align-self-center">
             <div>
-                <button class="apply-btn">Apply Now</button>
+                <a type="button" href="mailto:jakobvargis@gmail.com?subject=Job%20application%20to%20the%20post%20of%20'{{job['title']}}'&body=Name%3A%20%3CEnter%20your%20name%3E%0D%0A%0D%0AResume%3A%20%3CEnter%20you%20resume%20link%3E%0D%0A%0D%0ALinkedIn%3A%20%3CEnter%20your%20linkedIn%20profile%20link%3E" class="btn btn-outline-secondary">Apply Now</a>
             </div>
         </div>
 </div>
