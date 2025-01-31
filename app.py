@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify
+import pymongo
 
 app = Flask(__name__)
 
@@ -35,7 +36,7 @@ JOBS =  [
 ]
 
 @app.route("/")
-def hellow():
+def home():
   return render_template('home.html', jobs=JOBS, company_name="Jakob's IT Jobs")
 
 @app.route("/api/jobs")
