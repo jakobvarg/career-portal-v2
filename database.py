@@ -1,38 +1,28 @@
-# from sqlalchemy import 
-# for now i think sqlalchemy is not required when using psycopg2. will reconfirm later on.
-import psycopg2
+# we are import os as we are storing the database connection string as secret  
+# as we are storing this code in github in public repository it is not safe 
+import psycopg2.extras
+import os
 
-# declare the connection string specifying
-# the host name database name user name 
-# and password
-conn_string = "host='ep-dark-frost-a8brsyoj-pooler.eastus2.azure.neon.tech' dbname='careerportal'\
-user='neondb_owner' password='npg_LRxrayB0AQI5'"
+# Connection string
+conn_string = os.environ["DB_CONN_STR"]
 
-try:
-  # use connect function to establish the connection
-  conn = psycopg2.connect(conn_string)
-  with conn:
-      print('Successfully connected to the PostgreSQL database')
-      with conn.cursor() as cursor:
-        cursor.execute("SELECT * FROM jobs")
-        records = cursor.fetchall()
+def load_jobs_from_db():
+    try:
+        # Open a new connection for each request
+        conn = psycopg2.connect(conn_string)
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
-      print("type(records): ", type(records))
-      print()
-      for record in records:
-        print(records,"\n")
-        print("type(record): ", type(record))
-        print()
-except Exception as ex:
-  print(f'Sorry failed to connect: {ex}')
+        sql = "SELECT * FROM jobs;"
+        cursor.execute(sql)
+        results = cursor.fetchall()
 
-finally:
-  # First check if conn is defined like in case something is wrong in the connection string
-  #dont want users to see the error
-  if 'conn' in globals():
-    # Close the connection if open
-    if conn:
+        # Close cursor and connection after fetching data
+        cursor.close()
         conn.close()
-        print('Connection closed')
-  else:
-    print('Conn is not available or not defined, so connection not open')
+
+        return results
+
+    except Exception as ex:
+        print(f"Database error: {ex}")
+        return []
+
