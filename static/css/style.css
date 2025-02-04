@@ -1,0 +1,88 @@
+/* css for home, joblisting, and jobpage  */
+*, ::before, ::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; 
+}
+h1 {
+    font-size: 2.5rem;
+    font-family: Roboto;
+    margin: 8px;
+    text-align: center
+}
+h2 {
+    font-family: Roboto;
+    font-size: 2rem;
+    text-align: center;
+    margin: 12px
+}
+h4 {
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 1px #ddd;
+    padding: 4px;
+}
+#hero {
+    width: 100%;
+    height: 26.25em;
+    object-fit: cover;
+}
+.lead {
+    text-align: justify;
+    /* margin: 4px; */
+}
+.salary {
+    font-family: Poppins;
+    font-weight: 200;
+    font-size: 1rem;
+    font-style: italic;
+    color: darkblue;
+    padding: 2px;
+}
+.location {
+    font-family: Poppins;
+    font-weight: 200;
+    padding: 2px;
+}
+hr {
+    margin-bottom: 8px;
+}
+.btn-container {
+    text-align: center;
+}
+.primary-btn {
+    background-color: indianred;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: Roboto;
+    font-weight: 400;
+}
+
+/* css for 404 page */
+.custom-bg {
+    background: linear-gradient(to right, #e2e8f0, #e5e7eb);
+}
+
+.custom-btn:hover {
+    background-color: #f3e8ff !important;
+    transition: background-color 0.3s ease-in-out;
+}
+
+@media (prefers-color-scheme: dark) {
+    .custom-bg {
+        background: linear-gradient(to right, #1f2937, #111827);
+        color: white !important;
+    }
+
+    .custom-btn {
+        background-color: #374151 !important;
+        color: white !important;
+    }
+
+    .custom-btn:hover {
+        background-color: #4b5563 !important;
+    }
+}

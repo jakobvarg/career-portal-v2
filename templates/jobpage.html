@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Job Portal - {{job['title']}}</title>
+        {% include 'bootstrap.html' %}
+    </head>
+    <body>
+      {% include 'navmenu.html' %}
+        <img id="hero" class="img-fluid" src="/static/img/banner.webp" loading="lazy">
+<div class="container">
+    <h1>{{company_name}} Portal</h1>
+    <div class="custom-bg text-dark">
+      <div class="container">      
+        <h3>Job Title</h3>
+        <p>{{job['title']}}</p>
+        <h3>Location</h3>
+        <p>{{job['location']}}</p>
+        <h3>Salary</h3>
+        <p>{{job['currency']}}{{job['salary']}}/- per month</p>
+        <h3>Responsibilities</h3>
+          <ul>
+              {% for point in job['responsibilities'].split(".") if point.strip() %}
+                <li>{{point.strip()}}</li>
+              {% endfor %}
+          </ul>
+        <h3>Requirements</h3>
+          <ol>
+              {% for point in job['requirements'].split(".") if point.strip() %}
+                <li>{{point.strip()}}</li>
+              {% endfor %}
+          </ol>
+        <p>{{job['requirements']}}</p>
+      </div>
+    </div>
+</div>
+        {% include 'footer.html' %}
+ </body>
+</html>
