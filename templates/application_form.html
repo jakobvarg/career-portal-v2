@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="row mx-0 justify-content-center">
+    <div class="col-md-7 col-lg-5 px-lg-2 col-xl-4 px-xl-0 px-xxl-3">
+      <!-- action="{{url_for('apply_for_job', id=job['id'])}}" here apply_for_job is the function inside app.py where we route the application from data to another webpage on submit  -->
+      <form
+        action="{{url_for('apply_for_job', id=job['id'])}}"
+        method="POST"
+        class="w-100 rounded-1 p-4 border bg-white"
+      >
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Your name</span>
+          <input
+            required
+            name="name"
+            type="text"
+            class="form-control"
+            placeholder="Your name"
+          />
+        </label>
+
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Email address</span>
+          <input
+            required
+            name="email"
+            type="email"
+            class="form-control"
+            placeholder="youremail@example.com"
+          />
+        </label>
+
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Education level</span>
+          <select required name="education" class="form-select">
+            <option>12th Grade</option>
+            <option>Under Graduate</option>
+            <option>Post Graduate</option>
+            <option>3-Year Diploma</option>
+            <option>Phd.</option>
+          </select>
+        </label>
+
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Work experience</span>
+          <textarea
+            name="experience"
+            class="form-control"
+            rows="3"
+            placeholder="Your work experience details"
+          ></textarea>
+        </label>
+
+        <label class="d-block mb-4">
+          <span class="form-label d-block">LinkedIn URL</span>
+          <input required name="linkedin_url" type="url" class="form-control" placeholder="https://linkedin.com/in/yourprofile" />
+        </label>
+
+        <div class="mb-4">
+          <div>
+            <div class="form-check">
+              <label class="d-block">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  name="remote"
+                  value="Yes"
+                  checked
+                />
+                <span class="form-check-label"
+                  >Prefer to work remotely</span
+                >
+              </label>
+            </div>
+          </div>
+          <div>
+            <label class="form-check">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="remote"
+                value="No"
+              />
+              <span class="form-check-label">Prefer to work onsite</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary px-3 rounded-3">
+            Apply
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

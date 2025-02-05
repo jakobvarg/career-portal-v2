@@ -48,3 +48,30 @@ def load_job_by_id(id):
     except Exception as ex:
         print(f"Database error: {ex}")
         return []
+
+def add_application_to_db(id, data):
+    try:
+        # Open a new connection for each request
+        conn = psycopg2.connect(conn_string)
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+
+        sql = "INSERT INTO applications (job_id, name, email, linkedin_url, education, experience, remote) VALUES (%s, %s, %s, %s, %s, %s, %s);"
+
+        remote = data.get("remote", "no").lower()  # if remote exist's it returns its value else returns "no"
+
+        remote_val = remote == "yes"  # Convert to Boolean if remote == "yes" assigns True else False to remote_val
+
+        # Debugging print to check values
+        print(f"DEBUG: Inserting into DB: {data['name'], data['email'], data['linkedin_url'], data['education'], data['experience'], remote_val}")
+
+        # Execute query         
+        cursor.execute(sql, (id, data['name'], data['email'], data['linkedin_url'], data['education'], data['experience'], remote_val))
+        conn.commit()
+
+        # Close cursor and connection after inserting data
+        cursor.close()
+        conn.close()
+        return True
+    except Exception as ex:
+        print(f"Database error: {ex}")
+        return False

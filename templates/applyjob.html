@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Job Portal - {{job['title']}}</title>
+        {% include 'bootstrap.html' %}
+    </head>
+    <body>
+      {% include 'navmenu.html' %}
+        <img id="hero" class="img-fluid" src="/static/img/banner.webp" loading="lazy">
+        <div class="container">
+            <h1>{{company_name}} Portal</h1>
+            <h5>{{application['name']}}, you have successfully applied to the post of <b>{{job['title']}}</b></h5>
+            <div>
+                <b>Candidate Name</b>
+                <p>{{application['name']}}</p>
+                <b>Email</b>
+                <p>{{application['Email']}}</p>
+                <b>Education</b>
+                <p>{{application['education']}}</p>
+                <b>Work Experience</b>
+                <p>{{application['experience']}}</p>
+                <b>LinkedIn URL</b>
+                <p>{{application['linkedin_url']}}</p>
+                <b>Work Remote</b>
+                <p>{{application['remote']}}</p>
+            </div>
+        </div>
+    </body>
+</html>

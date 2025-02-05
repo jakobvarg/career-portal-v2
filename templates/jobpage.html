@@ -9,7 +9,7 @@
         <img id="hero" class="img-fluid" src="/static/img/banner.webp" loading="lazy">
 <div class="container">
     <h1>{{company_name}} Portal</h1>
-    <div class="custom-bg text-dark">
+    <div class="text-dark">
       <div class="container">      
         <h3>Job Title</h3>
         <p>{{job['title']}}</p>
@@ -32,6 +32,8 @@
         <p>{{job['requirements']}}</p>
       </div>
     </div>
+    <h2>Application Form</h2>
+    {% include 'application_form.html' %}
 </div>
         {% include 'footer.html' %}
  </body>
